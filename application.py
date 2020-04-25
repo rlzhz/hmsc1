@@ -10,12 +10,7 @@ class Applciation(Flask):
         db.init_app(self)
 
 db = SQLAlchemy()
-
-
 app = Applciation(__name__,template_folder=os.getcwd()+'/web/templates/',root_path=os.getcwd())
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@127.0.0.1/hmsc_db?=utf-8'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY','dev')
 manager = Manager(app)
 
 
