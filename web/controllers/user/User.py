@@ -99,47 +99,4 @@ def edit():
 
 @router_user.route("/reset-pwd", methods=['GET','POST'])
 def resetPwd():
-    if request.method == 'GET':
-        
-        return ops_render("user/reset_pwd.html")
-    # POST请求
-    resp = {
-        'code': 200,
-        'msg': '修改成功',
-        'data': {}
-    }
-    req = request.values
-    old_password = req['old_password'] if 'old_password' in req else ''
-    new_password = req['new_password'] if 'new_password' in req else ''
-    # POST请求
-    resp = {
-        'code': 200,
-        'msg': '重置密码成功',
-        'data': {}
-    }
-    if old_password is None or len(old_password) < 6:
-        resp['code'] = -1
-        resp['msg'] = '输入正确的'
-    
-    if new_password is None or len(new_password) < 6:
-        resp['code'] = -1
-        resp['msg'] = '输入正确的'
-
-    if old_password == new_password:
-        resp['code'] = -1
-        resp['msg'] = '新旧密码不能相同'
-
-    user_info = g.current_user
-    # 演示账号的保护
-    # if user_info.uid == 1:
-    #     pass
-    user_info.login_pwd = UserService.generatePwd(new_password,user_info.login_salt)
-    db.session.add(user_info)
-    db.session.commit()
-
-    # 修改cookie中的旧用户信息
-    response = make_response(json.dumps(resp))
-    response.set_cookie(app.config['AUTH_COOKIE_NAME'],'%s@%s' % (UserService.generateAuthCode(user_info),user_info.uid),60*60*24*15)
-
-
-    return response
+    return ops_render("user/reset_pwd.html")
