@@ -1,5 +1,5 @@
 SERVER_PORT = 9000
-SQLALCHEMY_DATABASE_URI = 'mysql://root:123456@127.0.0.1/hmsc?charset=utf8'
+SQLALCHEMY_DATABASE_URI = 'mysql://root:123456@127.0.0.1/hmsc_db?charset=utf8'
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_ECHO = False
 # Cookie 
@@ -14,3 +14,4 @@ IGNORE_CHECK_LOGIN_URLS = [
     "^/favicon.ico"
 ]
 
+PAGE_SIZE = 2
