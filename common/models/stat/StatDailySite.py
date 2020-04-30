@@ -1,10 +1,8 @@
 # coding: utf-8
-from sqlalchemy import Column, Date, DateTime, Integer, MetaData, Numeric
+from sqlalchemy import Column, Date, DateTime, Integer, Numeric
 from sqlalchemy.schema import FetchedValue
-from sqlalchemy.ext.declarative import declarative_base
+from flask_sqlalchemy import SQLAlchemy
 from application import db
-
-
 
 class StatDailySite(db.Model):
     __tablename__ = 'stat_daily_site'

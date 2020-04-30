@@ -1,7 +1,7 @@
 import hashlib,base64,random,string
 class UserService():
     
-    # 结合salt和md5 生成新的密码
+    # 结合salt和md5 生成加密的密码
     @staticmethod
     def generatePwd(pwd,salt):
         m = hashlib.md5()
@@ -18,10 +18,10 @@ class UserService():
         return m.hexdigest()
 
     # 生成16位的字符串，包含字母和数字
-    # string.ascii_lentters 所以的大小写字母
+    # string.ascii_letters  所有的大小写字母
+    # string.digits 0-9 数字
     @staticmethod
     def generateSalt(length=16):
-        keyList = [random.choice((string.ascii_letters + string.digits)) for i in range(16)]
-        return (''.join(keyList))
+        keyList = [ random.choice(( string.ascii_letters + string.digits )) for i in range(length) ]
 
-
+        return ("".join(keyList))
